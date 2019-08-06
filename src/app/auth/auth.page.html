@@ -1,0 +1,196 @@
+<ion-header text-center>
+  <ion-toolbar>
+    <ion-title>{{authModeLogin ? 'Login' : 'Sign up' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="!authModeLogin" #formRegister="ngForm" (ngSubmit)="onSignUp(formRegister)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" offset-md="3">
+          <ion-list>
+              <ion-item>
+                  <ion-label position="floating">First name</ion-label>
+                  <ion-input
+                    type="text"
+                    ngModel
+                    name="firstName"
+                    required
+                    minlength="3"
+                    #firstNameInput="ngModel"
+                  >
+                  </ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label
+                    color="danger"
+                    *ngIf="!firstNameInput.valid && firstNameInput.touched"
+                    >Must be at least 3 characters long!</ion-label
+                  >
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Last name</ion-label>
+                    <ion-input
+                      type="text"
+                      ngModel
+                      name="lastName"
+                      required
+                      minlength="3"
+                      #lastNameInput="ngModel"
+                    >
+                    </ion-input>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label
+                      color="danger"
+                      *ngIf="!lastNameInput.valid && lastNameInput.touched"
+                      >Must be at least 3 characters long!</ion-label
+                    >
+                  </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Username</ion-label>
+                    <ion-input
+                      type="text"
+                      ngModel
+                      name="username"
+                      required
+                      minlength="3"
+                      #usernameInput="ngModel"
+                    >
+                    </ion-input>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label
+                      color="danger"
+                      *ngIf="!usernameInput.valid && usernameInput.touched"
+                      >Must be at least 3 characters long!</ion-label
+                    >
+                  </ion-item>
+                  
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input
+                type="email"
+                ngModel
+                name="email"
+                required
+                email
+                #emailInput="ngModel"
+              >
+              </ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label
+                color="danger"
+                *ngIf="!emailInput.valid && emailInput.touched"
+                >Not a valid email address!</ion-label
+              >
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                type="password"
+                #passwordInput="ngModel"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label color="danger"
+              *ngIf="!passwordInput.valid && passwordInput.touched"
+              >Password must be six characters at least!</ion-label>
+              </ion-item
+            >
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-sm="6" offset-sm="3" text-right>
+          <ion-button
+            type="submit"
+            color="primary"
+            expand="block"
+            [disabled]="!formRegister.valid"
+          >
+            {{authModeLogin ? 'Login' : 'Register'}}
+          </ion-button>
+          <ion-button
+          (click)="onToggleLoginMode()"
+          type="button"
+          fill="clear"
+          expand="block"
+            >Switch to {{authModeLogin ? 'register' : 'login' }}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <form *ngIf="authModeLogin" #f="ngForm" (ngSubmit)="onLogin(f)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="6" offset-md="3">
+            <ion-list>
+                  <ion-item>
+                      <ion-label position="floating">Username</ion-label>
+                      <ion-input
+                        type="text"
+                        ngModel
+                        name="username"
+                        required
+                        minlength="3"
+                        #usernameInput="ngModel"
+                      >
+                      </ion-input>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label
+                        color="danger"
+                        *ngIf="!usernameInput.valid && usernameInput.touched"
+                        >Must be at least 3 characters long!</ion-label
+                      >
+                    </ion-item>
+                <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input
+                  ngModel
+                  name="password"
+                  required
+                  minlength="6"
+                  type="password"
+                  #passwordInput="ngModel"
+                ></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label color="danger"
+                *ngIf="!passwordInput.valid && passwordInput.touched"
+                >Password must be six characters at least!</ion-label>
+                </ion-item
+              >
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-sm="6" offset-sm="3" text-right>
+            <ion-button
+              type="submit"
+              color="primary"
+              expand="block"
+              [disabled]="!f.valid"
+            >
+              {{authModeLogin ? 'Login' : 'Register'}}
+            </ion-button>
+            <ion-button
+            (click)="onToggleLoginMode()"
+            type="button"
+            fill="clear"
+            expand="block"
+              >Switch to {{authModeLogin ? 'register' : 'login' }}</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+</ion-content>

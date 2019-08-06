@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button (click)="onDismiss()">{{closeButtonText}}</ion-button>
+        </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons *ngIf="selectable" slot="primary">
+      <ion-button (click)="onSubmit()">Submit</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <agm-map
+    (mapClick)="onMapClick($event)"
+    [latitude]="latitude"
+    [longitude]="longitude"
+  >
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+  </agm-map>
+</ion-content>

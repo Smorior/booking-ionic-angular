@@ -1,0 +1,7 @@
+{
+  "appId": "com.craftbox.ionicangular",
+  "appName": "booking",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
