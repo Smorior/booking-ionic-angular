@@ -81,14 +81,13 @@ export class AuthService implements OnDestroy {
   }
 
   login(username: string, password: string) {
+
+    const credentialString: string = 'Basic ' + btoa(username + ':' + password);
+
     return this.http
       .get<User>(
         environment.apacheLocation +
-          '/api/authenticate?username=' +
-          username +
-          '&password=' +
-          password,
-        { observe: 'response' as 'response'}
+          '/api/authenticate', {headers: {'Authorization': credentialString}, observe: 'response'}
       )
       .pipe(
         tap(resp => {
