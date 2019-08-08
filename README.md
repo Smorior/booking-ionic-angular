@@ -32,7 +32,7 @@ export const environment = {
 
 This one is for development purpose and the other one is for production.
 
-Also, you should clone backend part of the application from booking-spring repository. 
+Also, you should clone backend part of the application from [booking-spring](https://github.com/Smorior/booking-spring-boot) repository. 
 There, you can find details about running Spring Boot Application and adding database to MySQL used by this application.
 
 After successfully finishing all previous steps you should be able to run your Ionic application by simply executing next directive using Ionic CLI:
